@@ -5,7 +5,7 @@ USE employees_DB;
 
 CREATE TABLE department(
  id INT NOT NULL AUTO_INCREMENT ,
- dept_name VARCHAR(30) NOT NULL,
+ dept_name  VARCHAR(30) NOT NULL,
  PRIMARY KEY (id)
 );
 
@@ -26,3 +26,6 @@ manager_id INT ,
 PRIMARY KEY (id)
 );
 
+SELECT * FROM department;
+SELECT * FROM role;
+SELECT * FROM employee

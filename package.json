@@ -1,0 +1,26 @@
+{
+  "name": "Homework12-Employeetracker",
+  "version": "1.0.0",
+  "description": "Assets/employee-tracker.gif Assets/schema.png",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BudkasTim/Homework12-Employeetracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BudkasTim/Homework12-Employeetracker/issues"
+  },
+  "homepage": "https://github.com/BudkasTim/Homework12-Employeetracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^7.3.3",
+    "mysql": "^2.18.1"
+  }
+}
