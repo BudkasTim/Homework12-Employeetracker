@@ -1,7 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 require("console.table");
-// const sql = require("./sql");
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -68,7 +67,8 @@ function mainMenu() {
                     console.log("Viewing all employees\n");
 
                     var results=connection.query
-                    ("SELECT employee.id, employee.first_name, employee.last_name, role.title, department_id AS department, role.salary, employee.manager_id FROM employee, role where employee.role_id = role.id ;",function(error,results)
+                    ("SELECT employee.id, employee.first_name, employee.last_name, role.title, department_id AS department, role.salary, employee.manager_id FROM employee, role where employee.role_id = role.id ;",
+                    function(error,results)
                     {
 
                       if(error) throw error;
@@ -80,7 +80,7 @@ function mainMenu() {
                       
                       })
 
-                      
+                    };   
                     
 
     
@@ -90,7 +90,7 @@ function mainMenu() {
 
 function viewDepartmnt() {
  
-     connection.query("SELECT * FROM department ", function(err, res) 
+     connection.query("SELECT * FROM department ", function (err, res) 
      {
          if (error) throw error;
          console.table(res);
@@ -98,9 +98,7 @@ function viewDepartmnt() {
 
       });
 
- 
-
-};
+  };
 
 
 //========================================= 3."Add Employee" / CREATE: INSERT INTO
@@ -108,23 +106,23 @@ function viewDepartmnt() {
 
 
               function addEmployee() {
-                console.log("Inserting an employee!")
+                console.log("Adding a new employee!")
                 inquirer
                             .prompt([
                                 {
-                                    name: "employeeFirst",
+                                    name: "firstName",
                                     type: "input",
                                     message: "What is the employee's first name?",
                                   
                                 },
                                 {
-                                    name: "employeeLast",
+                                    name: "lastName",
                                     type: "input",
                                     message: "What is the employee's last name?",
                                     
                                 },
                                 {
-                                    name: "department",
+                                    name: "roleID",
                                     type: "input",
                                     message: "Please enter the role id",
 
@@ -134,15 +132,31 @@ function viewDepartmnt() {
                                     type: "input",
                                     message: "Please enter manager id",
                                 }
-                                  ]).then(answers => {
-
-                    addEmployee(answers.employeeFirst, answers.employeeLast, answers.department, answers.manager);
-                    
-                       })
-                  mainMenu();
+                                  ]).then(function(answers) {
+                                    connection.query("INSERT INTO employee SET ? ",
+                                    {
+                                      first_name:answers.firstName,
+                                      last_name:answers.lastName,
+                                      role_id:answers.roleID,
+                                      manager_id:answers.manager
+                                      
+                                    },
+                                    function(err,res){
+                                      if (err) throw err;
+                                      connection.query("SELECT * FROM employee", function(err, results){
+                                        if (err) throw err;
+                                        console.table(res);
+                                        console.log("A new employee added!")
+                                        mainMenu();
+                                      });
+                                      
+                                    });
+                                                              
+                  })
+                  
                       
                     
-              }
+              };
 
 //========================================= 5."Remove Employees" / DELETE, DELETE FROM
 
@@ -361,4 +375,4 @@ function viewDepartmnt() {
 //         });
 
 //     });
-}
+//}
