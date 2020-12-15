@@ -30,7 +30,7 @@ function mainMenu() {
         "View Departments",
         "View Roles",
         "Add Employees",
-        "Update Employee Role",
+        "Update EmployeeRole",
         "Add Role",
         "Exit"]
     })
@@ -48,7 +48,7 @@ function mainMenu() {
         case "Add Employees":
           addEmployee();
           break;
-        case "update Employee Role":
+        case "update EmployeeRole":
           updateEmployeeRole();
           break;
         case "Add Role":
@@ -229,42 +229,42 @@ function mainMenu() {
 //========================================= 6." update Roles " / UPDATE: SET WHERE
 
 
-            function updateEmployeeRole() {
-              console.log("updating a employee role!")
+         function updateEmployeeRole() {
+              console.log("updating a employee role!");
               connection.query("SELECT * FROM employee ", function(error, result){
                 if (error) throw error;
                 console.table(result);
 
-                // inquirer
-                //           .prompt([
-                //               {
-                //                   name: "employeeID",
-                //                   type: "input",
-                //                   message: "What is the employee ID?",
+                inquirer
+                          .prompt([
+                              {
+                                  name: "employeeID",
+                                  type: "input",
+                                  message: "What is the employee ID?",
                                 
-                //               },
-                //               {
-                //                   name: "roleID",
-                //                   type: "input",
-                //                   message: "Please enter Role ID?",
+                              },
+                              {
+                                  name: "roleID",
+                                  type: "input",
+                                  message: "Please enter Role ID?",
 
-                //               }                            
+                              }                            
 
-                //               ]).then(function(answer) {
-                //                   //connection.query("UPDATE employee SET role_id = ? WHERE id =? ",
-                //                       // [ roleID,employeeID  ],
-                //                   connection.query("UPDATE employee SET  ? WHERE ? ",
+                              ]).then(function(answer) {
+                                  //connection.query("UPDATE employee SET role_id = ? WHERE id =? ",
+                                      // [ roleID,employeeID  ],
+                                  connection.query("UPDATE employee SET  ? WHERE ? ",
                                   
-                //                   [ {role_id:answer.roleID },{ id: answer.employeeID}],
+                                  [ {role_id:answer.roleID },{ id: answer.employeeID}],
 
-                //                   function(error,result){
-                //                         if (error) throw error;
-                //                              console.table(result);
-                //                               console.log("A role updated!");
-                //                               //mainMenu(); 
-                //                               });
+                                  function(error,result){
+                                        if (error) throw error;
+                                             console.table(result);
+                                              console.log("A role updated!");
+                                              //mainMenu(); 
+                                              });
                                             
-                //                   });
+                                  });
                 
               
               
