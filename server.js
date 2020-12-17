@@ -48,7 +48,7 @@ function mainMenu() {
         case "Add Employees":
           addEmployee();
           break;
-        case "update EmployeeRole":
+        case "Update EmployeeRole":
           updateEmployeeRole();
           break;
         case "Add Role":
@@ -261,7 +261,7 @@ function mainMenu() {
                                         if (error) throw error;
                                              console.table(result);
                                               console.log("A role updated!");
-                                              //mainMenu(); 
+                                              mainMenu(); 
                                               });
                                             
                                   });
