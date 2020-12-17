@@ -1,8 +1,9 @@
 # Homework12-Employeetracker
 This app will allow uers to track their employees and update the current status
 
-(https://github.com/BudkasTim/Homework12-Employeetracker/blob/main/Assets/schema.png)
-https://github.com/BudkasTim/Homework12-Employeetracker/blob/main/Assets/employee-tracker.gif
+
+![tracker db schema](./Assets/schema.png)
+![employee tracker](./Assets/employee-tracker.gif) 
 
 
 
